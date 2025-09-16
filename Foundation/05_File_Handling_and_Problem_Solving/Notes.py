@@ -131,33 +131,71 @@ file operations through the csv library in python
 - reading data from a CSV file
 """
 
+"""
+WRITE to CSV
+"""
 import csv
-
-# define the header names
-field_names = ['name', 'age']
-
-# setup the data values as a list of rows and k:v pairs, where key is a header and a value is the row value
-data = [
-    {'name': 'Jill', 'age': 32},
-    {'name': 'Sara', 'age': 28}
-]
-
-with open('team.csv', 'w+') as csv_file:
-    spreadsheet = csv.DictWriter(csv_file, fieldnames=field_names)
-    print(type(spreadsheet))
-    #  use writeheader to write out the fieldnames we passed when creating a csv object
-    spreadsheet.writeheader()
-    # use writerows to write out data rows into the csv
-    spreadsheet.writerows(data)
-
-
+#
+# # define the header names
+# field_names = ['name', 'age']
+#
+# # setup the data values as a list of rows and k:v pairs, where key is a header and a value is the row value
+# data = [
+#     {'name': 'Jill', 'age': 32},
+#     {'name': 'Sara', 'age': 28}
+# ]
+#
+# with open('team.csv', 'w+') as csv_file:
+#     spreadsheet = csv.DictWriter(csv_file, fieldnames=field_names)
+#     print(type(spreadsheet))
+#     #  use writeheader to write out the fieldnames we passed when creating a csv object
+#     spreadsheet.writeheader()
+#     # use writerows to write out data rows into the csv
+#     spreadsheet.writerows(data)
 
 
+"""
+READ CSV
+"""
+
+#
+# import csv
+#
+# with open('team.csv', 'r') as csv_file:
+#     # use DictReader to setup a dictreader object from csv library - only passing file object
+#     spreadsheet = csv.DictReader(csv_file)
+#     print(spreadsheet)
+#     for row in spreadsheet:
+#         print(row)
+#         print(row['age'])
+#         print(row['name'])
 
 
+### EXERCISE 2 ###
+"""
+This program is supposed to read data about trees from a file to find the shortest tree. 
+Complete the program adding code to open 'trees.csv'.
 
-
-
+The trees.csv file included with your student guides. 
+Save the csv file in the same folder as your Python program!
+# """
+# import csv
+#
+# # read the csv file to get the data
+# with open('trees.csv', 'r') as tree_csv:
+# #     read the csv file with DicReader
+#     spreadsheet = csv.DictReader(tree_csv)
+#
+# # create heights list to populate and evaluate later
+#     heights = []
+#
+# # for every row, take the heights and add it to heights list
+#     for row in spreadsheet:
+#         heights.append(row['height'])
+#
+# #  get shortest i.e. smallest numerical value in heights list
+# shortest_height = min(heights)
+# print(shortest_height)
 
 
 
