@@ -56,20 +56,52 @@ WRITE()
 
 """
 APPEND()
+
 """
 
-# first open the file
-file = open("test.txt", "a")
+# # first open the file
+# file = open("test.txt", "a")
+#
+# # setup lines to write into a file
+# movie_quotes = [
+#     "\nI'm gonna make him an offer he can't refuse. (THE GODFATHER)",
+#     "\nMay the Force be with you. (START WARS)",
+#     "\nThere's no place like home. (THE WIZARD OF OZ)"
+# ]
+#
+# # write the lines into the file
+# file.writelines(movie_quotes)
+#
+# # close the file
+# file.close()
 
-# setup lines to write into a file
-movie_quotes = [
-    "\nI'm gonna make him an offer he can't refuse. (THE GODFATHER)",
-    "\nMay the Force be with you. (START WARS)",
-    "\nThere's no place like home. (THE WIZARD OF OZ)"
-]
 
-# write the lines into the file
-file.writelines(movie_quotes)
+"""
+WITH BLOCK
+Context manager to handle open() and close() of a file during file handling in python
+"""
 
-# close the file
-file.close()
+# # setup the lines to write into a file
+# movie_quotes = [
+#     "\nThis is second randomly generated new line"
+# ]
+#
+# # use with block to open a file
+# with open("test.txt", 'a') as file:
+#     # write the movie quote lines into a file object
+#     file.writelines(movie_quotes)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
