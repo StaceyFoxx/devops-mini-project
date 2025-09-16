@@ -1,0 +1,75 @@
+"""
+FILE HANDLING - OPEN()
+"""
+
+# file = open("test.txt", 'r')
+# open() will create the file object we can use to interact with the file in python
+# print(file)
+
+"""
+READ()
+"""
+
+# read() will read ALL content from a file and pop that into a variable
+# content = file.read()
+# print(content)
+# print(type(content))
+
+
+"""
+READLINE()
+"""
+# readline() will read only the first line of a file - \n <- new line in a file
+# content = file.readline()
+# print(content)
+
+
+"""
+READLINES()
+"""
+
+# content = file.readlines()
+# print(content)
+# print(type(content))
+
+# file.close()
+
+
+"""
+FILE HANDLING - WRITE TO FILE
+- write to an existing file
+- append to an existing file
+"""
+
+"""
+WRITE()
+"""
+# # OPEN() a file to create the file object - use 'w' for write mode
+# file = open("test.txt", 'w')
+#
+# # WRITE a line into the file object
+# file.write("Frankly, my dear, I don't give a damn. (GONE WITH THE WIND)")
+#
+# # CLOSE() the file after all operations are done
+# file.close()
+
+
+"""
+APPEND()
+"""
+
+# first open the file
+file = open("test.txt", "a")
+
+# setup lines to write into a file
+movie_quotes = [
+    "\nI'm gonna make him an offer he can't refuse. (THE GODFATHER)",
+    "\nMay the Force be with you. (START WARS)",
+    "\nThere's no place like home. (THE WIZARD OF OZ)"
+]
+
+# write the lines into the file
+file.writelines(movie_quotes)
+
+# close the file
+file.close()
