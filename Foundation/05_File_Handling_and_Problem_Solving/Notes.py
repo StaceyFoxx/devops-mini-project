@@ -107,28 +107,48 @@ NB: You will need to manually create a new file called todo.txt in the same fold
 as your program before you start.
 """
 
-# Ask the user to input a new to-do item
-new_item = input('Enter a to-do item: ')
-
-# Read the contents of the existing to-do items
-with open('todo.txt', 'r') as todo_file:
-    content = todo_file.read()
-# WITH() block automatically CLOSE() the file
-
-# Add the new to do item to the existing to-do items
-todos = content + '\n' + new_item
-
-# Save the updated to-do items into the file
-with open('todo.txt', 'w+') as todo_file:
-    todo_file.write(todos)
-
-
+# # Ask the user to input a new to-do item
+# new_item = input('Enter a to-do item: ')
+#
+# # Read the contents of the existing to-do items
+# with open('todo.txt', 'r') as todo_file:
+#     content = todo_file.read()
+# # WITH() block automatically CLOSE() the file
+#
+# # Add the new to do item to the existing to-do items
+# todos = content + '\n' + new_item
+#
+# # Save the updated to-do items into the file
+# with open('todo.txt', 'w+') as todo_file:
+#     todo_file.write(todos)
 
 
 
+"""
+CSV
+file operations through the csv library in python
+- writing to a CSV file
+- reading data from a CSV file
+"""
 
+import csv
 
+# define the header names
+field_names = ['name', 'age']
 
+# setup the data values as a list of rows and k:v pairs, where key is a header and a value is the row value
+data = [
+    {'name': 'Jill', 'age': 32},
+    {'name': 'Sara', 'age': 28}
+]
+
+with open('team.csv', 'w+') as csv_file:
+    spreadsheet = csv.DictWriter(csv_file, fieldnames=field_names)
+    print(type(spreadsheet))
+    #  use writeheader to write out the fieldnames we passed when creating a csv object
+    spreadsheet.writeheader()
+    # use writerows to write out data rows into the csv
+    spreadsheet.writerows(data)
 
 
 
