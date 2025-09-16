@@ -145,6 +145,12 @@ import csv
 #     {'name': 'Sara', 'age': 28}
 # ]
 #
+"""
+EXTRA NOTE: If you had an extra line error, this may be due to an operating issue
+The csv module uses \r\n line endings by default which can cause extra blank lines on some systems
+this is a common fix:
+with open("team.csv", "w+", newline='') as csv_file:
+"""
 # with open('team.csv', 'w+') as csv_file:
 #     spreadsheet = csv.DictWriter(csv_file, fieldnames=field_names)
 #     print(type(spreadsheet))
