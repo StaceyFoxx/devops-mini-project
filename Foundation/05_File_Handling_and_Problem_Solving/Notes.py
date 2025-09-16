@@ -92,6 +92,46 @@ Context manager to handle open() and close() of a file during file handling in p
 #     file.writelines(movie_quotes)
 
 
+### EXERCISE 1 ###
+"""
+Create a to-do list program that writes user input to a file
+
+The program should:
+
+Ask the user to input a new to-do item
+Read the contents of the existing to-do items
+Add the new to do item to the existing to-do items
+Save the updated to-do items
+
+NB: You will need to manually create a new file called todo.txt in the same folder 
+as your program before you start.
+"""
+
+# Ask the user to input a new to-do item
+new_item = input('Enter a to-do item: ')
+
+# Read the contents of the existing to-do items
+with open('todo.txt', 'r') as todo_file:
+    content = todo_file.read()
+# WITH() block automatically CLOSE() the file
+
+# Add the new to do item to the existing to-do items
+todos = content + '\n' + new_item
+
+# Save the updated to-do items into the file
+with open('todo.txt', 'w+') as todo_file:
+    todo_file.write(todos)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
