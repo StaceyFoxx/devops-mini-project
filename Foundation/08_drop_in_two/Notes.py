@@ -94,65 +94,65 @@ Date
 version
     0.1
 """
-import requests
-
-
-def pokemon_id_request(pokemon_number, user_name):
-    """
-    Send a request to poke api on a pokemon id to retrieve information about that pokemon
-    :param pokemon_number: int
-    :return: A string summary of the pokemon
-    """
-    endpoint = 'https://pokeapi.co/api/v2/pokemon/{}/'.format(pokemon_number)
-
-    response = requests.get(endpoint)
-    pokemon = response.json()
-
-    print(f'We have processed your pokemon id {user_name}')
-    poke_data = f"{pokemon['name'].capitalize()} captured with a height of {pokemon['height']} and weight of {pokemon['weight']}."
-
-    return poke_data
-
-
-def write_poke_data(data, user_name):
-    """
-    Write out pokemon data into a log book
-    :param user_name: string - user name accepted from the user
-    :param data: string - summary line of a pokemon
-    """
-    with open('Pokemon_Logbook.txt', 'a') as poke_file:
-        data = f'{user_name}: {data}'
-        poke_file.write(data + '\n')
-
-
-def main():
-    """
-    Entry point of the pokemon script to summarise and log a pomekon from a user input
-    """
-
-    flag = True
-
-    while flag:
-        pokemon_number = input("What is the Pokemon's ID? Type exit to close program: ")
-        user_name = input('What is your username? ')
-
-        # if exit then close program
-        if pokemon_number == 'exit':
-            print("Goodbye!")
-            flag = False
-
-        # run a request to pokemon api to get pokemon summary
-        poke_data= pokemon_id_request(pokemon_number, user_name)
-
-        # log summary into log book
-        write_poke_data(poke_data, user_name)
-
-
-
-if __name__ == '__main__':
-    #  run app
-    main()
-
+# import requests
+#
+#
+# def pokemon_id_request(pokemon_number, user_name):
+#     """
+#     Send a request to poke api on a pokemon id to retrieve information about that pokemon
+#     :param pokemon_number: int
+#     :return: A string summary of the pokemon
+#     """
+#     endpoint = 'https://pokeapi.co/api/v2/pokemon/{}/'.format(pokemon_number)
+#
+#     response = requests.get(endpoint)
+#     pokemon = response.json()
+#
+#     print(f'We have processed your pokemon id {user_name}')
+#     poke_data = f"{pokemon['name'].capitalize()} captured with a height of {pokemon['height']} and weight of {pokemon['weight']}."
+#
+#     return poke_data
+#
+#
+# def write_poke_data(data, user_name):
+#     """
+#     Write out pokemon data into a log book
+#     :param user_name: string - user name accepted from the user
+#     :param data: string - summary line of a pokemon
+#     """
+#     with open('Pokemon_Logbook.txt', 'a') as poke_file:
+#         data = f'{user_name}: {data}'
+#         poke_file.write(data + '\n')
+#
+#
+# def main():
+#     """
+#     Entry point of the pokemon script to summarise and log a pomekon from a user input
+#     """
+#
+#     flag = True
+#
+#     while flag:
+#         pokemon_number = input("What is the Pokemon's ID? Type exit to close program: ")
+#         user_name = input('What is your username? ')
+#
+#         # if exit then close program
+#         if pokemon_number == 'exit':
+#             print("Goodbye!")
+#             flag = False
+#
+#         # run a request to pokemon api to get pokemon summary
+#         poke_data= pokemon_id_request(pokemon_number, user_name)
+#
+#         # log summary into log book
+#         write_poke_data(poke_data, user_name)
+#
+#
+#
+# if __name__ == '__main__':
+#     #  run app
+#     main()
+#
 
 
 
@@ -162,22 +162,22 @@ if __name__ == '__main__':
 STRING SLICING
 """
 
-#idx  0123456
-# slicing is inclusive - exclusive
-msg = "I am learning to code with CFG!"
-
-# slice at specific indexes inclusive - exclusive
-print(msg[2:5])
-# takt n number of characters from the back
-print(msg[-4:])
-# slice and add a step to the slicing
-print(msg[5:13:2])
-# get the first few characters
-print(msg[:5])
-# get the last few character
-print(msg[-5:])
-# reverse a string
-print(msg[::-1])
+# #idx  0123456
+# # slicing is inclusive - exclusive
+# msg = "I am learning to code with CFG!"
+#
+# # slice at specific indexes inclusive - exclusive
+# print(msg[2:5])
+# # takt n number of characters from the back
+# print(msg[-4:])
+# # slice and add a step to the slicing
+# print(msg[5:13:2])
+# # get the first few characters
+# print(msg[:5])
+# # get the last few character
+# print(msg[-5:])
+# # reverse a string
+# print(msg[::-1])
 
 
 
