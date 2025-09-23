@@ -16,3 +16,68 @@ OPTIONAL - Extra credit: refine your solution above by using a translator instea
 e.g. line = line.translate(line.maketrans("", "", string.punctuation))
 we will review this solution example in the drop in session on Thrusday
 """
+
+
+#  SOLUTION 1 -- it is OK
+#  file with punctuation (use file: 5.3_example_two.txt)
+#  ------------------------------------------------------------
+
+# fname = input("Enter file name: ")
+# search_word = input("Enter word to be searched:").lower()
+#
+# count = 0
+#
+# with open(fname, 'r') as text:
+#     for line in text:
+#         # Remove the leading spaces and newline character
+#         line = line.strip()
+#
+#         # Convert the characters in line to  lowercase to avoid case mismatch
+#         line = line.lower()
+#
+#         # NB: 'clean up' each word from the punctuation
+#         for char in '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~':
+#             line = line.replace(char, "")
+#
+#         # Split the line into words
+#         words = line.split()
+#
+#         for word in words:
+#             if (word == search_word):
+#                 count = count + 1
+#
+# print("Occurrences of the word: " + search_word)
+# print(count)
+
+
+#  SOLUTION 2 -- MUCH BETTER
+#  file with punctuation (use file: 5.3_example_two.txt)
+#  ------------------------------------------------------------
+
+# import string
+#
+# fname = input("Enter file name: ")
+# search_word = input("Enter word to be searched:").lower()
+#
+# count = 0
+#
+# with open(fname, 'r') as text:
+#     for line in text:
+#         # Remove the leading spaces and newline character
+#         line = line.strip()
+#
+#         # Convert the characters in line to  lowercase to avoid case mismatch
+#         line = line.lower()
+#
+#         # Remove the punctuation marks from the line
+#         line = line.translate(line.maketrans("", "", string.punctuation))  # much cleaner solution (we review this next)
+#
+#         # Split the line into words
+#         words = line.split()
+#
+#         for word in words:
+#             if (word == search_word):
+#                 count = count + 1
+#
+# print("Occurrences of the word: " + search_word)
+# print(count)

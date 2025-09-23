@@ -5,6 +5,7 @@
 """
 
 import requests
+from pprint import pprint
 
 pokemon_number = input("What is the Pokemon's ID? ")
 
