@@ -1,11 +1,8 @@
-USE bakery;
+-- dont forget BETWEEN, LIKE, IN, IS (NULL)
 
-SELECT *
-FROM Sweet
-WHERE price BETWEEN 0 AND 0.5;
-
-
-USE harry_potter;
+SELECT * 
+FROM students
+WHERE IQ > 7;
 
 SELECT *
 FROM students
