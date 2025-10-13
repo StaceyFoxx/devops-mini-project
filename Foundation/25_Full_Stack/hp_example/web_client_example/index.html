@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hogwarts Student Directory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      async function fetchCharacters() {
+        const response = await fetch("http://127.0.0.1:5000/characters");
+        const data = await response.json();
+        displayCharacters(data);
+      }
+
+      function displayCharacters(characters) {
+        const houseMapping = {
+          1: "Gryffindor",
+          2: "Hufflepuff",
+          3: "Ravenclaw",
+          4: "Slytherin",
+        };
+        const list = document.getElementById("character-list");
+        list.innerHTML = "";
+
+        characters.forEach((character) => {
+          const [id, name, studentClass, iq, house, quidditch] = character;
+
+          const item = document.createElement("div");
+          item.className = "bg-gray-100 p-4 rounded-lg shadow-md";
+
+          item.innerHTML = `
+            <h3 class="text-lg font-semibold">${name} (${studentClass})</h3>
+            <p>ID: <span class="font-medium">${id}</span></p>
+            <p>IQ: <span class="font-medium">${iq ?? "Unknown"}</span></p>
+            <p>House: <span class="font-medium">${
+              houseMapping[house] ?? "Unknown"
+            }</span></p>
+            <p>Quidditch: <span class="font-medium">${
+              quidditch === 1 ? "Yes" : quidditch === 0 ? "No" : "Unknown"
+            }</span></p>
+        `;
+
+          list.appendChild(item);
+        });
+      }
+
+      function houseName(houseId) {
+        const houses = {
+          1: "Gryffindor",
+          2: "Hufflepuff",
+          3: "Ravenclaw",
+          4: "Slytherin",
+        };
+        return houses[houseId] || "Unknown";
+      }
+
+      async function addCharacter(event) {
+        event.preventDefault();
+        const name = document.getElementById("name").value;
+        const studentClass = document.getElementById("class").value;
+        const iq = document.getElementById("iq").value;
+        const house = document.getElementById("house").value;
+        const quidditch = document.getElementById("quidditch").checked;
+
+        const newCharacter = {
+          name: name,
+          class: studentClass,
+          IQ: parseInt(iq),
+          house: parseInt(house),
+          quidditch: quidditch,
+        };
+
+        await fetch("http://127.0.0.1:5000/characters/add", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newCharacter),
+        });
+
+        fetchCharacters(); // Refresh the list
+      }
+
+      async function deleteCharacter() {
+        const id = document.getElementById("delete-id").value;
+        await fetch(`http://127.0.0.1:5000/characters/remove/${id}`, {
+          method: "DELETE",
+        });
+        fetchCharacters(); // Refresh the list
+      }
+
+      window.onload = fetchCharacters;
+    </script>
+  </head>
+  <body class="bg-gray-50 text-gray-900 font-sans">
+    <div class="max-w-4xl mx-auto p-6">
+      <h1 class="text-3xl font-bold text-center text-indigo-600">
+        Hogwarts Student Directory
+      </h1>
+
+      <!-- Add Student Form -->
+      <div class="bg-white shadow-md rounded-lg p-6 mt-6">
+        <h2 class="text-xl font-semibold text-gray-700">Add New Student</h2>
+        <form onsubmit="addCharacter(event)" class="mt-4 space-y-3">
+          <input
+            type="text"
+            id="name"
+            placeholder="Name"
+            class="w-full p-2 border rounded-md"
+            required
+          />
+          <input
+            type="text"
+            id="class"
+            placeholder="Class (e.g., Potions)"
+            class="w-full p-2 border rounded-md"
+            required
+          />
+          <input
+            type="number"
+            id="iq"
+            placeholder="IQ"
+            class="w-full p-2 border rounded-md"
+            required
+          />
+          <select id="house" class="w-full p-2 border rounded-md">
+            <option value="1">Gryffindor</option>
+            <option value="2">Hufflepuff</option>
+            <option value="3">Ravenclaw</option>
+            <option value="4">Slytherin</option>
+          </select>
+          <label class="flex items-center space-x-2">
+            <input type="checkbox" id="quidditch" class="h-4 w-4" />
+            <span>Plays Quidditch</span>
+          </label>
+          <button
+            type="submit"
+            class="w-full bg-indigo-600 text-white p-2 rounded-md hover:bg-indigo-700"
+          >
+            Add Student
+          </button>
+        </form>
+      </div>
+
+      <!-- Student List -->
+      <div class="bg-white shadow-md rounded-lg p-6 mt-6">
+        <h2 class="text-xl font-semibold text-gray-700">Students List</h2>
+        <button
+          onclick="fetchCharacters()"
+          class="bg-gray-200 p-2 rounded-md mt-2"
+        >
+          Refresh List
+        </button>
+        <div
+          id="character-list"
+          class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4"
+        >
+          <!-- Students will be added here -->
+        </div>
+      </div>
+
+      <!-- Delete Student -->
+      <div class="bg-white shadow-md rounded-lg p-6 mt-6">
+        <h2 class="text-xl font-semibold text-gray-700">Delete Student</h2>
+        <div class="mt-4 flex space-x-2">
+          <input
+            type="number"
+            id="delete-id"
+            placeholder="Enter ID to delete"
+            class="w-full p-2 border rounded-md"
+          />
+          <button
+            onclick="deleteCharacter()"
+            class="bg-red-600 text-white p-2 rounded-md hover:bg-red-700"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
