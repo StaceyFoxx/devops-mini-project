@@ -7,7 +7,7 @@ Write a Python function to validate a password string based on the following rul
 4. The password must contain at least one digit.
 5. The password must contain at least one special character from the following list:
 
-Input: "MyP@ssword1"
+Input: "MyPassword1"
 Output: "false"
 
 Input: "Valid@123"
