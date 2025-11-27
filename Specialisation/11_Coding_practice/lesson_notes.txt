@@ -1,0 +1,36 @@
+
+INPUTS
+
+
+competitions
+-  list of lists, each inner list represents a game
+        - each game contains a [HOME team, AWAY team]
+
+# competitions = [
+#     ['Panthers', 'Lionesses'],
+#     ['Lionesses', 'Dolphins'],
+#     ['Dolphins', 'Panthers'],
+# ]
+
+results
+- a list of numbers 0 or 1 representing which team won.
+    - 1 means the HOME team won
+    - 0 means the AWAY team won
+
+# results = [0, 0, 1]
+
+OUTPUT
+ - Dolphins
+
+NOTE
+- a team will ALWAYS win within each game pair
+- if a team WINS, they get 3 points, if they lose they get 0 points
+- the team with the most gained points at the end of the competition wins
+- the list of games (in the competitions) ALWAYS matches the list of results,
+    same length of lists!!
+
+By hand I would:
+- match the result of each game against the result list to see which team was the winner and which was the loser
+    - keeping in mind the home team is first in each pair and away team is lost in each pair
+- assign in tracker the team and give them 3 points
+- sum up the pionts from my winning tracker, then take the team with highest score
