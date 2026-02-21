@@ -1,0 +1,19 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+.terraform.lock.hcl
+
+# Environment variables
+.env
+
+# Python (if applicable)
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+
+# Docker
+*.tar
