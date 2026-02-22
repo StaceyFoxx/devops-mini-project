@@ -1,0 +1,38 @@
+# API version for Deployment resources
+apiVersion: apps/v1
+
+# Defines the type of Kubernetes object
+kind: Deployment
+
+metadata:
+  # Name of the Deployment
+  name: devops-mini-deployment
+
+spec:
+  # Number of desired pod replicas
+  replicas: 2
+
+  # Selector tells the Deployment which Pods it manages
+  selector:
+    matchLabels:
+      app: devops-mini
+
+  # Template for the Pods that will be created
+  template:
+    metadata:
+      # Labels applied to the Pods
+      # Must match the selector above
+      labels:
+        app: devops-mini
+
+    spec:
+      # List of containers inside each Pod
+      containers:
+        - name: web  # Container name
+          
+          # Docker image used to create the container
+          image: sfoxx/devops-mini-project:latest
+          
+          # Ports exposed by the container
+          ports:
+            - containerPort: 80  # Application listens on port 80

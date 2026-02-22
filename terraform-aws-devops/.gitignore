@@ -1,19 +1,33 @@
+#################################
 # Terraform
-.terraform/
+#################################
+**/.terraform/*
 *.tfstate
 *.tfstate.*
 crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
 .terraform.lock.hcl
 
-# Environment variables
+#################################
+# Environment Variables
+#################################
 .env
 
-# Python (if applicable)
+#################################
+# Python
+#################################
 __pycache__/
 *.pyc
 
+#################################
 # OS
+#################################
 .DS_Store
 
+#################################
 # Docker
+#################################
 *.tar

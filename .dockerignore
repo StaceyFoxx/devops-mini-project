@@ -1,0 +1,19 @@
+# Ignore Git metadata
+.git
+.gitignore
+
+# Terraform files not needed in Docker
+terraform-aws-devops/*.tfstate
+terraform-aws-devops/*.tfstate.backup
+terraform-aws-devops/.terraform/
+
+# AWS key (never include .pem in Docker!)
+*.pem
+
+# README and other docs (optional)
+README.md
+devops-mini-project-web-page-preview.jpg
+
+# OS / Editor files
+.DS_Store
+*.swp
