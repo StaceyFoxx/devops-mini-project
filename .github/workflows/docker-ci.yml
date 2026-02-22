@@ -1,0 +1,35 @@
+name: Docker CI Pipeline
+
+# Trigger this workflow on push to main branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout repository code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2️⃣ Log in to DockerHub using GitHub Secrets
+      - name: Log in to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # 3️⃣ Build Docker image
+      - name: Build Docker image
+        run: |
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/devops-mini-project:${{ github.sha }} .
+          docker tag ${{ secrets.DOCKERHUB_USERNAME }}/devops-mini-project:${{ github.sha }} ${{ secrets.DOCKERHUB_USERNAME }}/devops-mini-project:latest
+
+      # 4️⃣ Push Docker image to DockerHub
+      - name: Push Docker image
+        run: |
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/devops-mini-project:${{ github.sha }}
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/devops-mini-project:latest
