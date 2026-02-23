@@ -1,0 +1,2 @@
+~/.ssh/devops-mini-key.pem
+/Users/staceyfoxx/Desktop/devops-mini-project/devops-mini-key.pem
