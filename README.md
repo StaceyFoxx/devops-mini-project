@@ -35,6 +35,16 @@ The goal is to show a **full DevOps workflow** from containerization to cloud de
 
 ---
 
+## Repository Cleaning & Security
+
+This repository has been **fully sanitized** to remove any sensitive information:
+
+✅ All private keys (.pem) have been removed from Git history  
+✅ Hardcoded absolute paths to local directories have been cleared  
+✅ Workflows and modules verified to run safely without secrets
+
+This demonstrates best practices in **repository hygiene and security**, ensuring safe collaboration and deployment.
+
 ## How to Run
 
 ### Run Docker, Terraform, and Kubernetes
